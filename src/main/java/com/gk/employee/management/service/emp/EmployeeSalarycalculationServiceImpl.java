@@ -2,8 +2,10 @@ package com.gk.employee.management.service.emp;
 
 import org.springframework.stereotype.Service;
 
+import com.gk.employee.management.service.EmployeeSalarycalculationService;
+
 @Service
-public class EmployeeSalarycalculationServiceImpl {
+public class EmployeeSalarycalculationServiceImpl implements EmployeeSalarycalculationService{
 
 	public double fixedSalary(double netSalary) {
 		String game = "Cricket";
