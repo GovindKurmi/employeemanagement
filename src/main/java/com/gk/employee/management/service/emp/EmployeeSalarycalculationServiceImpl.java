@@ -1,25 +1,31 @@
 package com.gk.employee.management.service.emp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gk.employee.management.dao.EmployeeSalarycalculationDao;
+import com.gk.employee.management.model.EmployeeSalary;
 import com.gk.employee.management.service.EmployeeSalarycalculationService;
 
 @Service
-public class EmployeeSalarycalculationServiceImpl implements EmployeeSalarycalculationService{
+public class EmployeeSalarycalculationServiceImpl implements EmployeeSalarycalculationService {
 
-	public double fixedSalary(double netSalary) {
-		String game = "Cricket";
-		switch (game) {
-		case "Hockey":
-			System.out.println("Let's play Hockey");
-			break;
-		case "Cricket":
-			System.out.println("Let's play Cricket");
-			break;
-		case "Football":
-			System.out.println("Let's play Football");
-		}
-		return 0;
+	@Autowired
+	private EmployeeSalarycalculationDao employeeSalarycalculationDao;
+
+	@Override
+	public EmployeeSalary addEmployeeSalary(EmployeeSalary employeeSalary) {
+		employeeSalary.setNetSalary(netSalaryCalculate(employeeSalary));
+		return employeeSalarycalculationDao.save(employeeSalary);
+	}
+
+	private double netSalaryCalculate(EmployeeSalary emp) {
+		return emp.getHra() + emp.getLta() + emp.getMa() + emp.getRwa();
+	}
+
+	@Override
+	public double getNetSalary(Long id) {
+		return employeeSalarycalculationDao.findNetSalaryById(id);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.gk.employee.management.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,14 +13,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Table(name = "employeesalary")
 public class EmployeeSalary {
-  
-  @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
-  private long id;
-  private double lta;
-  private double hra;
-  private double rwa;
-  private double ma;
+
+	@Id
+	@Column(nullable = true)
+	private long id;
+	private double lta;
+	private double hra;
+	private double rwa;
+	private double ma;
+	private double netSalary;
 }
