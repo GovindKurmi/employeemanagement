@@ -18,7 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.gk.employee.management.dao.EmployeeManagementDao;
 import com.gk.employee.management.model.Employee;
-import com.gk.employee.management.service.EmployeeManagementServiceImpl;
+import com.gk.employee.management.service.emp.EmployeeManagementServiceImpl;
 
 @SpringBootTest
 class EmployeeManagementServiceImplTest {
